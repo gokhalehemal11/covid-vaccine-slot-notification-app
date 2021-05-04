@@ -3,7 +3,6 @@ function GetDistricts() {
   var state = s.value;
   var URL =
     "https://cdn-api.co-vin.in/api/v2/admin/location/districts/" + state;
-  console.log(URL);
 
   var districtSelect = document.getElementById("district");
   districtSelect.innerHTML = "";
@@ -26,4 +25,28 @@ function GetDistricts() {
     },
     dataType: "json"
   });
+}
+
+function CheckAvl(){
+  var district = document.getElementById("district");
+  var date= document.getElementById("date");
+  
+  var dist_id= district.value
+  var sel_date= new Date(date.value).toJSON().slice(0,10).split('-').reverse().join('/')
+  var URL =
+    "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=" +dist_id+"&date="+sel_date;
+  
+  $.ajax({
+    type: "GET",
+    url: URL,
+    success: function(data) {
+      console.log(data);
+    },
+    dataType: "json"
+  });
+  
+}
+
+function SaveToDB(){
+  console.log("ToDo");
 }
