@@ -3,7 +3,7 @@ $(function() {
 	'use strict';
 
 	// Form
-
+  
 	var contactForm = function() {
 
 		if ($('#contactForm').length > 0 ) {

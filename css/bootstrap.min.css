@@ -5690,13 +5690,13 @@ a.close.disabled {
   left: 0;
   z-index: 1050;
   display: none;
-  width: 100%;
+  width: auto;
   height: 100%;
   overflow: hidden;
   outline: 0;
 }
 .modal-dialog {
-  max-width: 100%;
+  max-width: auto;
   margin: 0;
   top: 0;
   bottom: 0;
