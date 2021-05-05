@@ -65,6 +65,23 @@
                     </div>
                   </div>
                   <div class="row">
+                    <div class="container">
+                    <div class="col-md-12 form-group">
+                      <h4><b>Select Age Group</b></h4>
+                      <label class="radio-inline col-sm-3 form-group"
+                        ><input type="radio" id="all" name="radioopt" value="45" checked />All
+                        age</label
+                      >
+                      <label class="radio-inline col-sm-3 form-group"
+                        ><input type="radio" id="above45" name="radioopt" value="45" />45 +</label
+                      >
+                      <label class="radio-inline col-sm-3 form-group"
+                        ><input type="radio" id="below45" name="radioopt" value="18" />18-44</label
+                      >
+                    </div>
+                    </div>
+                  </div>
+                  <div class="row">
                     <div class="col-md-12 form-group">
                       <input
                         type="date"
@@ -158,6 +175,7 @@
                         type="button"
                         value="Check Availability"
                         class="btn btn-primary rounded-0 py-2 px-4"
+                        onclick="CheckAvl()"
                       />
                     </div>
                     <div class="col-6">
@@ -167,6 +185,7 @@
                         type="button"
                         value="Notify Me"
                         class="btn btn-success rounded-0 py-2 px-4"
+                        onclick="SaveToDB()"
                       />
                     </div>
                   </div>
@@ -175,6 +194,84 @@
                 <div id="form-message-success">
                   Your message was sent, thank you!
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Available Centres</h4>
+              </div>
+              <div class="modal-body">
+                <table>
+                  <thead>
+                    <tr>
+                      <td>Centre Name</td>
+                      <td>Avaialble Slots</td>
+                      <td>Nearest Date</td>
+                      <td>Min Age Limit</td>
+                    </tr>
+                  </thead>
+                  <tbody class="table" id="avlres">
+                  </tbody>
+                </table>
+              </div>
+              <div class="modal-footer">
+                <a
+                  href="https://www.cowin.gov.in/home"
+                  type="button"
+                  class="btn btn-success"
+                  data-dismiss="modal"
+                >
+                  Register on Co-Win
+                </a>
+                <a
+                  href=""
+                  type="button"
+                  class="btn btn-danger"
+                  data-dismiss="modal"
+                >
+                  Close
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Error Modal -->
+        <div id="errModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Server Overload</h4>
+              </div>
+              <div class="modal-body">
+                <p>
+                  Server is overloaded with too many API requests. Please try again after some time.
+                  Sorry for the inconvenience.
+                </p>
+              </div>
+              <div class="modal-footer">
+                <a
+                  href="https://www.cowin.gov.in/home"
+                  type="button"
+                  class="btn btn-success"
+                  data-dismiss="modal"
+                >
+                  Co-Win Homepage
+                </a>
+                <a
+                  href=""
+                  type="button"
+                  class="btn btn-danger"
+                  data-dismiss="modal"
+                >
+                  Close
+                </a>
               </div>
             </div>
           </div>
