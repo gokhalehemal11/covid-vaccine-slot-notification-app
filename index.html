@@ -17,24 +17,27 @@
 
     <link rel="stylesheet" href="css/style.css" />
     <title>
-      Covid Vaccine Slot Notifier: Get notified as soon as slots are avaialble
-      at the Covid Vaccination centres in your district or pincode
+      Covid Vaccine Slot Checker Notifier: Check the available Covid Vaccination
+      centres and their slots. Get notified as soon as slots are available at
+      the Covid Vaccination centres in your district or pincode.
     </title>
   </head>
   <body>
     <div class="content">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-md-10">
+          <div class="col-md-11">
             <div class="row justify-content-center">
               <div class="col-md-6">
-                <h3 class="heading mb-4">Covid Vaccine Slot Notifier App</h3>
+                <h3 class="heading mb-4">Covid Vaccine Slot Checker and Notifier App</h3>
                 <p>
+                  Check for the available vaccination centers in your district/pincode. 
+                  <br>
                   You will be notified as soon as Slots are available at
                   Vaccination centres in your district or pin-code for the
                   earliest dates. Please enter your details to stay notified.
-                  <br /><br />
-                  This is just a notification app. To register and book your
+                  <br>
+                  This is just app checks and notifies for available centers. To register and book your
                   slots kindly visit
                   <a href="https://www.cowin.gov.in/home">Co-Win Homepage</a>
                   and follow the instructions. Thank you
@@ -54,17 +57,6 @@
                   id="contactForm"
                   name="contactForm"
                 >
-                  <!--<div class="row">
-                    <div class="col-md-12 form-group">
-                      <input
-                        type="email"
-                        class="form-control"
-                        name="email"
-                        id="email"
-                        placeholder="Email"
-                      />
-                    </div>
-                  </div>-->
                   <div class="row">
                     <div class="container">
                       <div class="col-md-12 form-group">
@@ -203,7 +195,7 @@
                         type="button"
                         value="Notify Me"
                         class="btn btn-success rounded-0 py-2 px-4"
-                        onclick="SaveToDB()"
+                        onclick="ShowNotifyModal()"
                       />
                     </div>
                   </div>
@@ -299,7 +291,12 @@
           </div>
         </div>
         <!-- Error Modal -->
-        <div id="emptyModal" class="modal fade" role="dialog" style="width:100%">
+        <div
+          id="emptyModal"
+          class="modal fade"
+          role="dialog"
+          style="width:100%"
+        >
           <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
@@ -320,6 +317,87 @@
                 >
                   Close
                 </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Notification Modal -->
+        <div
+          id="notifyModal"
+          class="modal fade"
+          role="dialog"
+          style="width:100%"
+        >
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Notify Me for available slots</h4>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-md-12 form-group">
+                    <input
+                      type="email"
+                      class="form-control"
+                      name="email"
+                      id="email"
+                      placeholder="Please provide your email"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  id="store_db"
+                  type="submit"
+                  class="btn btn-success"
+                  data-dismiss="modal"
+                  onclick="SaveToDB()"
+                >
+                  Send Request
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Save to DB for Notification Modal -->
+        <div
+          id="SuccessSaveModal"
+          class="modal fade"
+          role="dialog"
+          style="width:100%"
+        >
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Success</h4>
+              </div>
+              <div class="modal-body">
+                <p>
+                  Thank you. <br />
+                  We will notify you as soon as slots get available for
+                  vaccination centres in your pincode or district with nearest
+                  available dates.
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
               </div>
             </div>
           </div>
