@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="fonts/icomoon/style.css" />
 
     <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css" /> -->
 
     <link rel="stylesheet" href="css/style.css" />
     <title>
@@ -53,7 +54,7 @@
                   id="contactForm"
                   name="contactForm"
                 >
-                  <div class="row">
+                  <!--<div class="row">
                     <div class="col-md-12 form-group">
                       <input
                         type="email"
@@ -63,31 +64,48 @@
                         placeholder="Email"
                       />
                     </div>
-                  </div>
+                  </div>-->
                   <div class="row">
                     <div class="container">
-                    <div class="col-md-12 form-group">
-                      <h4><b>Select Age Group</b></h4>
-                      <label class="radio-inline col-sm-3 form-group"
-                        ><input type="radio" id="all" name="radioopt" value="45" checked />All
-                        age</label
-                      >
-                      <label class="radio-inline col-sm-3 form-group"
-                        ><input type="radio" id="above45" name="radioopt" value="45" />45 +</label
-                      >
-                      <label class="radio-inline col-sm-3 form-group"
-                        ><input type="radio" id="below45" name="radioopt" value="18" />18-44</label
-                      >
-                    </div>
+                      <div class="col-md-12 form-group">
+                        <h4><b>Select Age Group</b></h4>
+                        <label class="radio-inline col-sm-3 form-group"
+                          ><input
+                            type="radio"
+                            id="all"
+                            name="radioopt"
+                            value="45"
+                            checked
+                          />All age</label
+                        >
+                        <label class="radio-inline col-sm-3 form-group"
+                          ><input
+                            type="radio"
+                            id="above45"
+                            name="radioopt"
+                            value="45"
+                          />45 +</label
+                        >
+                        <label class="radio-inline col-sm-3 form-group"
+                          ><input
+                            type="radio"
+                            id="below45"
+                            name="radioopt"
+                            value="18"
+                          />18-44</label
+                        >
+                      </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-12 form-group">
                       <input
-                        type="date"
+                        type="text"
                         class="form-control"
                         name="date"
                         id="date"
+                        placeholder="Select Date (MM/DD/YYYY)"
+                        onfocus="(this.type='date')"
                       />
                     </div>
                   </div>
@@ -199,26 +217,30 @@
           </div>
         </div>
         <!-- Modal -->
-        <div id="myModal" class="modal fade" role="dialog">
+        <div id="myModal" class="modal fade" role="dialog" style="width:100%">
           <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="modal-title">Available Centres</h4>
+                <h4 class="modal-title" id="modal_heading"></h4>
               </div>
               <div class="modal-body">
-                <table>
-                  <thead>
-                    <tr>
-                      <td>Centre Name</td>
-                      <td>Avaialble Slots</td>
-                      <td>Nearest Date</td>
-                      <td>Min Age Limit</td>
-                    </tr>
-                  </thead>
-                  <tbody class="table" id="avlres">
-                  </tbody>
-                </table>
+                <div class="table-responsive">
+                  <table
+                    id="avlres_table"
+                    class="table table-striped table-bordered"
+                  >
+                    <thead>
+                      <tr>
+                        <td>Centre Name</td>
+                        <td>Available Slots</td>
+                        <td>Nearest Date</td>
+                        <td>Min Age Limit</td>
+                      </tr>
+                    </thead>
+                    <tbody class="table" id="avlres"></tbody>
+                  </table>
+                </div>
               </div>
               <div class="modal-footer">
                 <a
@@ -242,7 +264,7 @@
           </div>
         </div>
         <!-- Error Modal -->
-        <div id="errModal" class="modal fade" role="dialog">
+        <div id="errModal" class="modal fade" role="dialog" style="width:100%">
           <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
@@ -251,8 +273,8 @@
               </div>
               <div class="modal-body">
                 <p>
-                  Server is overloaded with too many API requests. Please try again after some time.
-                  Sorry for the inconvenience.
+                  Server is overloaded with too many API requests. Please try
+                  again after some time. Sorry for the inconvenience.
                 </p>
               </div>
               <div class="modal-footer">
@@ -276,12 +298,41 @@
             </div>
           </div>
         </div>
+        <!-- Error Modal -->
+        <div id="emptyModal" class="modal fade" role="dialog" style="width:100%">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Empty Fields</h4>
+              </div>
+              <div class="modal-body">
+                <p>
+                  Please select Date and either District or Pincode.
+                </p>
+              </div>
+              <div class="modal-footer">
+                <a
+                  href=""
+                  type="button"
+                  class="btn btn-danger"
+                  data-dismiss="modal"
+                >
+                  Close
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.validate.min.js"></script>
+    <!--<script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap4.min.js"></script>-->
     <script src="js/script.js"></script>
     <script src="js/main.js"></script>
   </body>
