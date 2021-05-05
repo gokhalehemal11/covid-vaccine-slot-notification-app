@@ -34,17 +34,17 @@ function GetDistricts() {
 function CheckAvl() {
   var pincode = document.getElementById("pincode").value;
   var date = document.getElementById("date");
-  if (date.value === ""){
+  if (date.value === "") {
     $("#emptyModal").modal("show");
-  }
-  else{
+  } else {
     var sel_date = new Date(date.value)
       .toJSON()
       .slice(0, 10)
       .split("-")
       .reverse()
       .join("/");
-    var agelimit = document.querySelector('input[name="radioopt"]:checked').value;
+    var agelimit = document.querySelector('input[name="radioopt"]:checked')
+      .value;
     var AvlRes = document.getElementById("avlres");
     AvlRes.innerHTML = "";
 
@@ -107,7 +107,7 @@ function CheckAvl() {
               }
             }
           } else {
-            flagElse= true;
+            flagElse = true;
             var tr = document.createElement("tr");
             tr.innerHTML =
               "<td>" +
@@ -138,7 +138,8 @@ function CheckAvl() {
         },
         dataType: "json"
       });
-      document.getElementById("modal_heading").innerHTML= "Available Centres in "+district.options[district.selectedIndex].text;
+      document.getElementById("modal_heading").innerHTML =
+        "Available Centres in " + district.options[district.selectedIndex].text;
       $("#myModal").modal("show");
     } else {
       var dataLen = 0;
@@ -196,7 +197,7 @@ function CheckAvl() {
               }
             }
           } else {
-            flagElse=true;
+            flagElse = true;
             var tr = document.createElement("tr");
             tr.innerHTML =
               "<td>" +
@@ -227,13 +228,61 @@ function CheckAvl() {
         },
         dataType: "json"
       });
-      document.getElementById("modal_heading").innerHTML= "Available Centres in "+pincode;
+      document.getElementById("modal_heading").innerHTML =
+        "Available Centres in " + pincode;
       $("#myModal").modal("show");
     }
   }
 }
 
+function ShowNotifyModal() {
+  var date = document.getElementById("date");
+  if (date.value === "") {
+    $("#emptyModal").modal("show");
+  } else {
+    $("#notifyModal").modal("show");
+  }
+}
+
 function SaveToDB() {
-  console.log("ToDo");
-  $("#myModal").modal("show");
+  var date = document.getElementById("date");
+  if (date.value === "") {
+    $("#emptyModal").modal("show");
+  } else {
+    var sel_date = new Date(date.value)
+      .toJSON()
+      .slice(0, 10)
+      .split("-")
+      .reverse()
+      .join("/");
+    var agelimit = document.querySelector('input[name="radioopt"]:checked')
+      .value;
+    var state = document.getElementById("state").value;
+    var d = document.getElementById("district");
+    var district = d.options[d.selectedIndex].text;
+    var pincode = document.getElementById("pincode").value;
+    var emailid = document.getElementById("email").value;
+    var data = {
+      'Email': emailid,
+      'Pincode': pincode,
+      'State': state,
+      'District': district,
+      'AgeLimit': agelimit,
+      'Date': sel_date
+    };
+    if (emailid !== "" && (district !== "" || pincode !== "")) {
+      $.ajax({
+        url:
+          "https://script.google.com/macros/s/AKfycbz23FDhyG3AnXv1psKZe0xot_SCeY38ZG-IIr4IxYAXRvutbRSR9OKfm8SXaxBNybQ/exec",
+        method: "POST",
+        dataType: "json",
+        data: data
+      }).done(function(){
+        $("#notifyModal").modal("hide");
+        $("#SuccessSaveModal").modal("show");
+      });
+    } else {
+      $("#emptyModal").modal("show");
+    }
+  }
 }
