@@ -6,7 +6,7 @@ import gspread
 
 # If modifying these scopes, delete the file token.json.
 SERVICE_ACCOUNT_FILE= "keys.json"
-SCOPES = ['https://www.googleapis.com/auth/spreadsheets', 'https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+SCOPES = ['https://www.googleapis.com/auth/spreadsheets', 'https://spreadsheets.google.com/feeds']
 
 #credentials= None
 #credentials= service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes= SCOPES)
