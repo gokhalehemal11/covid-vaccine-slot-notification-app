@@ -17,31 +17,19 @@
 
     <link rel="stylesheet" href="css/style.css" />
     <title>
-      Covid Vaccine Slot Checker Notifier: Check the available Covid Vaccination
-      centres and their slots. Get notified as soon as slots are available at
-      the Covid Vaccination centres in your district or pincode.
+      Covid Vaccine Slot Checker and Notification App in your district or
+      pincode: Check the available Covid Vaccination centres and their slots.
+      Get notified as soon as slots are available at the Covid Vaccination
+      centres in your district or pincode.
     </title>
   </head>
   <body>
     <div class="content">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-md-11">
+          <div class="col-md-12">
             <div class="row justify-content-center">
               <div class="col-md-6">
-                <h3 class="heading mb-4">Covid Vaccine Slot Checker and Notifier App</h3>
-                <p>
-                  Check for the available vaccination centers in your district/pincode. 
-                  <br>
-                  You will be notified as soon as Slots are available at
-                  Vaccination centres in your district or pin-code for the
-                  earliest dates. Please enter your details to stay notified.
-                  <br>
-                  This is just app checks and notifies for available centers. To register and book your
-                  slots kindly visit
-                  <a href="https://www.cowin.gov.in/home">Co-Win Homepage</a>
-                  and follow the instructions. Thank you
-                </p>
                 <p>
                   <img
                     src="https://image.freepik.com/free-vector/cartoon-coronavirus-vaccine-illustration_23-2148849133.jpg"
@@ -49,7 +37,19 @@
                     class="img-fluid"
                   />
                 </p>
+                <h3 class="heading mb-4">
+                  Covid Vaccine Slot Checker and Notification App
+                </h3>
+                <p>
+                  Check for the available vaccination centers in your
+                  district/pincode.
+                  <br />
+                  You will be notified as soon as Slots are available at
+                  Vaccination centres in your district or pin-code for the
+                  earliest dates. Please enter your details to stay notified.
+                </p>
               </div>
+              <br />
               <div class="col-md-6">
                 <form
                   class="mb-5"
@@ -66,7 +66,7 @@
                             type="radio"
                             id="all"
                             name="radioopt"
-                            value="45"
+                            value="0"
                             checked
                           />All age</label
                         >
@@ -89,7 +89,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row">
+                  <div class="row" style="display: none">
                     <div class="col-md-12 form-group">
                       <input
                         type="text"
@@ -205,6 +205,14 @@
                   Your message was sent, thank you!
                 </div>
               </div>
+              <div class="col-md-12">
+                <p>
+                  <b>Note: </b>This app can only check and notify for available
+                  centers. To register and book your slots kindly visit
+                  <a href="https://www.cowin.gov.in/home">Co-Win Homepage</a>
+                  and follow the instructions. Thank you
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -220,7 +228,7 @@
                 <div class="table-responsive">
                   <table
                     id="avlres_table"
-                    class="table table-striped table-bordered"
+                    class="table table-striped table-bordered sortable"
                   >
                     <thead>
                       <tr>
@@ -305,7 +313,7 @@
               </div>
               <div class="modal-body">
                 <p>
-                  Please select Date and either District or Pincode.
+                  Please select either District or Pincode.
                 </p>
               </div>
               <div class="modal-footer">
@@ -411,6 +419,7 @@
     <script src="js/jquery.validate.min.js"></script>
     <!--<script src="js/jquery.dataTables.min.js"></script>
     <script src="js/dataTables.bootstrap4.min.js"></script>-->
+    <script src="js/sortable.js"></script>
     <script src="js/script.js"></script>
     <script src="js/main.js"></script>
   </body>
