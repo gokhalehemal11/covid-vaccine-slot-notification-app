@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "covidvaccineslotapp",
+  "private_key_id": "3239b8dca11944587ba363fbd07ca69bdfeb7a0d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDHiXDwzKVChKqB\nFK8HbOWfQu4Ag4fj8Y1/GziJut49/LjnmE7EhE/pmveqIGBi7k3aFOL0A8mULXti\nTWjiHvvlJC+2qzwZVWR89JerfQKDPkhPYTsmquC/Q7KyhUoNCwuN1YKQY3jGCGdi\nN49LisDVvdS2VdEXOr2mtWzWe2zy9UIXZuWQcGsM9IUsvUULC0Z15EKx7UaT17fX\ndKSlcahCasVO84lsYnDhXceOBFmM8yDFYdLrrhPHEnxzSLy41L8QHr+QP1b67nt7\n//ajAW6p9JDudvfSEiVPZNrwdjH8R44GKWdak91FGonurOO3G/ziGw87lhfdpem4\nTAmrtEflAgMBAAECggEAXJ47Qkp7Wwjha9EB/VxaqTYT60EiTnfMyfcEo0mN5w/r\nc/SKe0U/Ipu/4cPteX5LvLJ9Ne6cHp+N6e8sg+kF2zKUwyFwYAH3BtkxnXQFOo4q\nWk4zeptOfvkZdSvRV4SM9GTqmcLSSHmWI0zOwq3BHHVkys3CpBmr9jm4L0ZTJ+JE\ndXFMn688yQ77vvF3PYxFkJ0tdvGE5p3LBtLqrmyhXZhXl2Lp8aGTAAcIWoAQeKEy\nKmxJuI9FYLoAzpVgouqWMgVXFXYMNZdsgB3Jq8COvAbnLRNWf3xf+zRgN8qZWhJf\nRyP3gYf/giXbbCMOtKlsFLdjmHGoPb8ZbpzXGrA3cQKBgQD9w4NYzNvKzZqL1tlJ\nPF4pdtK2x35sop08kmq8z6cKi5rVXXH5/jXBa/AlNhNWf9WT2c4zpOuFw9ePr7WF\nRUp3wciL96KfosCZAIK2xkKdVEaQWWj4Z/K0c9Q2B7ZZvtjaVOmhMOmp/enlnGvF\n9sg4BdiuZc7BUNEAiuCReCkEAwKBgQDJS5fcMrvfOgjosLNbcxX6YmHYw+YEL+Jw\n/2AimQmIQK19slXBNkQTQNS849Zk1Wyh/vICZ2//wbqgNiRw+jHoAOr6g+8j+ZeI\nRZxWkjuDxboX+kFenuoXSVWBOdnsVKC+/XdlK3P+4cE1DSiv8q9BmBB9C5gA4pux\nN3c0AYcj9wKBgADIO31olDzZyWIo9V5+ayPhk+CwWLlo/ucS5HVUhoVHzOBfe1xz\n5iKEfKcAtaqMllHwV+xc08UDx4RP3FVe003vMPkNeFjZnZJbKAv8LHRjsBv9yo8J\ncvwPZ1YLTAqWxgBWRqoShoXZnIDyrHpdulxB2FshQTPjVeGUjACmyCmVAoGBAL7e\nHMrAmH/cCaKKGid2grp+GwVtC2eg9/fpToC/19gIa/kp5kJkcDxJVu8coqfN70nT\n8inxZrN+QLW1YOx3cGbqp+SOwWy9N8ARMWKtGh2imQgvVVihGpqmAJud/VMoE5vF\nvzaA82YVLhxds9zSIvfxdoD7Q1BjjvmE/FSltjyVAoGABhYcDM5bwvw6XTsGQDrM\nTsQsW4XJWZMO7oYVigIC3SDmCklwW+C1NtoEpkKwAwCgN73WTtw0y+oBPf9suUZF\n4i0Ftb36iKrq6Psumt6EGsWXREL/60YwNeoU6y0nSFjksORNVeJGroY12eMFq4+D\ntXhuGzBXzuDHoP0RPl59bo4=\n-----END PRIVATE KEY-----\n",
+  "client_email": "covidvaccineslotserviceacc@covidvaccineslotapp.iam.gserviceaccount.com",
+  "client_id": "113409373529574306373",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/covidvaccineslotserviceacc%40covidvaccineslotapp.iam.gserviceaccount.com"
+}
