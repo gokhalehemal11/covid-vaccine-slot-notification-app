@@ -70,6 +70,7 @@ function CheckAvl() {
           var avlslots = 0;
           var nearDate = "";
           var minage = "";
+          var vaccine = "";
 
           for (var k in data.centers) {
             //console.log(data.centers[k].sessions);
@@ -87,18 +88,21 @@ function CheckAvl() {
               avlslots = data.centers[k].sessions[session].available_capacity;
               nearDate = data.centers[k].sessions[session].date;
               minage = data.centers[k].sessions[session].min_age_limit;
+              vaccine = data.centers[k].sessions[session].vaccine;
             }
             if (flagIf) {
               var tr = document.createElement("tr");
               tr.innerHTML =
-                "<td>" +
+                "<td><a href='https://www.cowin.gov.in/home' style='color: blue'>" +
                 data.centers[k].name +
-                "</td><td>" +
+                "</a></td><td>" +
                 avlslots +
                 "</td><td>" +
                 nearDate +
                 "</td><td>" +
                 minage +
+                "</td><td>" +
+                vaccine +
                 "</td>";
               AvlRes.append(tr);
             }
@@ -115,6 +119,8 @@ function CheckAvl() {
             "N/A" +
             "</td><td>" +
             "N/A" +
+            "</td><td>" +
+            "N/A" +
             "</td>";
           AvlRes.append(tr);
         }
@@ -122,6 +128,8 @@ function CheckAvl() {
           var tr = document.createElement("tr");
           tr.innerHTML =
             "<td>" +
+            "N/A" +
+            "</td><td>" +
             "N/A" +
             "</td><td>" +
             "N/A" +
@@ -161,6 +169,7 @@ function CheckAvl() {
           var avlslots = 0;
           var nearDate = "";
           var minage = "";
+          var vaccine = "";
 
           for (var k in data.centers) {
             //console.log(data.centers[k].sessions);
@@ -178,18 +187,21 @@ function CheckAvl() {
               avlslots = data.centers[k].sessions[session].available_capacity;
               nearDate = data.centers[k].sessions[session].date;
               minage = data.centers[k].sessions[session].min_age_limit;
+              vaccine = data.centers[k].sessions[session].vaccine;
             }
             if (flagIf) {
               var tr = document.createElement("tr");
               tr.innerHTML =
-                "<td>" +
+                "<td><a href='https://www.cowin.gov.in/home' style='color: blue'>" +
                 data.centers[k].name +
-                "</td><td>" +
+                "</a></td><td>" +
                 avlslots +
                 "</td><td>" +
                 nearDate +
                 "</td><td>" +
                 minage +
+                "</td><td>" +
+                vaccine +
                 "</td>";
               AvlRes.append(tr);
             }
@@ -206,6 +218,8 @@ function CheckAvl() {
             "N/A" +
             "</td><td>" +
             "N/A" +
+            "</td><td>" +
+            "N/A" +
             "</td>";
           AvlRes.append(tr);
         }
@@ -213,6 +227,8 @@ function CheckAvl() {
           var tr = document.createElement("tr");
           tr.innerHTML =
             "<td>" +
+            "N/A" +
+            "</td><td>" +
             "N/A" +
             "</td><td>" +
             "N/A" +
