@@ -1,23 +1,25 @@
-from googleapiclient.discovery import build
-from google.oauth2.credentials import Credentials
+# importing the required libraries
+import gspread
+import pandas as pd
+from oauth2client.service_account import ServiceAccountCredentials
 
-from google.oauth2 import service_account
+# define the scope
+scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
 
-# If modifying these scopes, delete the file token.json.
-SERVICE_ACCOUNT_FILE= "keys.json"
-SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
+# add credentials to the account
+creds = ServiceAccountCredentials.from_json_keyfile_name('keys.json', scope)
 
-credentials= service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes= SCOPES)
+# authorize the clientsheet 
+client = gspread.authorize(creds)
 
-# The ID and range of a sample spreadsheet.
-SPREADSHEET_ID = '1AhtW8GNzWqyQMzLNKgZLpGGsZaDT4XEJmMH1PQgGbgw'
+# get the instance of the Spreadsheet
+sheet = client.open('VaccineSlotApp')
 
-service = build('sheets', 'v4', credentials=credentials)
+# get the first sheet of the Spreadsheet
+sheet_instance = sheet.get_worksheet(0)
 
-# Call the Sheets API
-sheet = service.spreadsheets()
-result = sheet.values().get(spreadsheetId=SPREADSHEET_ID,
-                            range="responses!A1:G4").execute()
+# get all the records of the data
+records_data = sheet_instance.get_all_records()
 
-#values = result.get('values', [])
-print(result)
+# view the data
+print(records_data)
