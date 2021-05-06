@@ -11,13 +11,13 @@ credentials= None
 credentials= service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes= SCOPES)
 
 # The ID and range of a sample spreadsheet.
-SAMPLE_SPREADSHEET_ID = '1AhtW8GNzWqyQMzLNKgZLpGGsZaDT4XEJmMH1PQgGbgw/edit#gid=0'
+SPREADSHEET_ID = '1AhtW8GNzWqyQMzLNKgZLpGGsZaDT4XEJmMH1PQgGbgw'
 
 service = build('sheets', 'v4', credentials=credentials)
 
 # Call the Sheets API
 sheet = service.spreadsheets()
-result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
+result = sheet.values().get(spreadsheetId=SPREADSHEET_ID,
                             range="responses!A1:G4").execute()
 
 #values = result.get('values', [])
