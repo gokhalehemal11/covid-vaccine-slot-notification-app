@@ -27,7 +27,7 @@
     <div class="content">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-md-11">
+          <div class="col-md-12">
             <div class="row justify-content-center">
               <div class="col-md-6">
                 <p>
@@ -66,7 +66,7 @@
                             type="radio"
                             id="all"
                             name="radioopt"
-                            value="45"
+                            value="0"
                             checked
                           />All age</label
                         >
@@ -89,7 +89,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row">
+                  <div class="row" style="display: none">
                     <div class="col-md-12 form-group">
                       <input
                         type="text"
@@ -207,8 +207,8 @@
               </div>
               <div class="col-md-12">
                 <p>
-                  This app can only check and notify for available centers. To
-                  register and book your slots kindly visit
+                  <b>Note: </b>This app can only check and notify for available
+                  centers. To register and book your slots kindly visit
                   <a href="https://www.cowin.gov.in/home">Co-Win Homepage</a>
                   and follow the instructions. Thank you
                 </p>
@@ -228,7 +228,7 @@
                 <div class="table-responsive">
                   <table
                     id="avlres_table"
-                    class="table table-striped table-bordered"
+                    class="table table-striped table-bordered sortable"
                   >
                     <thead>
                       <tr>
@@ -313,7 +313,7 @@
               </div>
               <div class="modal-body">
                 <p>
-                  Please select Date and either District or Pincode.
+                  Please select either District or Pincode.
                 </p>
               </div>
               <div class="modal-footer">
@@ -419,6 +419,7 @@
     <script src="js/jquery.validate.min.js"></script>
     <!--<script src="js/jquery.dataTables.min.js"></script>
     <script src="js/dataTables.bootstrap4.min.js"></script>-->
+    <script src="js/sortable.js"></script>
     <script src="js/script.js"></script>
     <script src="js/main.js"></script>
   </body>
