@@ -4,7 +4,11 @@ from oauth2client.service_account import ServiceAccountCredentials
 import requests
 from datetime import datetime
 import random
+import json
 
+def sendMailToCorrespondingUsers(Data, result):
+	print("Mail: ", Data)
+	print("Message: ", result)
 
 def switchHeader():
 	headersList= [
@@ -21,18 +25,43 @@ def switchLanguage():
 	langList= ['en-US', 'hi-IN']
 	return random.choice(langList)
 
-def setuAPIReq(URL, PARAMS, HEADERS= {}):
+def setuAPIReq(URL, PARAMS, peopleData, age_limit, HEADERS= {}):
+
+	AvlfFlag= False
+	resData= dict()
 
 	r = requests.get(URL, headers= HEADERS, params= PARAMS, timeout=5)
 	if r.status_code == 200:
-		print(r)
+		responseData= r.json()
+		#print("Response Data", responseData)
+		if len(responseData['centers']) > 0:
+			for center in responseData['centers']:
+				for session in center['sessions']:
+					# if session['available_capacity'] == 0:
+					# 	continue
+					if age_limit != 0:
+						if session['min_age_limit'] != age_limit:
+							continue
+						resData['vaccine']= session['vaccine']
+						resData['center']= center['name']
+						resData['nearest_date']= session['date']
+						AvlfFlag= True
+					else:
+						resData['vaccine']= session['vaccine']
+						resData['center']= center['name']
+						resData['nearest_date']= session['date']
+						AvlfFlag= True
+
+		if AvlfFlag:
+			sendMailToCorrespondingUsers(list(set(peopleData)), resData)
+
 	else:
 		HEADERS = {
     	'User-Agent': switchHeader(),
 		'accept-Language': switchLanguage(),
 		'content': 'application/json'
 		}
-		ret= setuAPIReq(URL, PARAMS, HEADERS)
+		setuAPIReq(URL, PARAMS, peopleData, age_limit, HEADERS)
 
 def GetDataFromGoogleSheets():
 	# define the scope
@@ -59,6 +88,7 @@ def GetDataFromGoogleSheets():
 
 	sort_by_pincode= dict()
 	sort_by_district= dict()
+	sort_by_agelimit= dict()
 	for record in records_data:
 		if record['District'] != '':
 			if record['District'] not in sort_by_district:
@@ -72,35 +102,74 @@ def GetDataFromGoogleSheets():
 			else:
 				sort_by_pincode[record['Pincode']].append(record)
 
-	return [sort_by_district, sort_by_pincode]
+		if record['AgeLimit'] not in sort_by_agelimit:
+			sort_by_agelimit[record['AgeLimit']]= [record]
+		else:
+			sort_by_agelimit[record['AgeLimit']].append(record)
+
+	return [sort_by_district, sort_by_pincode, sort_by_agelimit]
 
 def GetDataFromSetuAPI():
 	# Get today's date
 	today_date= datetime.today().strftime('%d-%m-%Y')
 
-	sort_by_district, sort_by_pincode= GetDataFromGoogleSheets()
+	sort_by_district, sort_by_pincode, sort_by_agelimit= GetDataFromGoogleSheets()
 
-	print(sort_by_district)
+	ageset45 = list()
+	ageset18 = list()
+	agesetall = list()
+	
+	print(sort_by_agelimit)
 	print()
-	print(sort_by_pincode)
+	if 45 in sort_by_agelimit:
+		ageset45= sort_by_agelimit[45]
+	if 18 in sort_by_agelimit:
+		ageset18= sort_by_agelimit[18]
+	if 0 in sort_by_agelimit:		
+		agesetall= sort_by_agelimit[0]
 
 	for pincode in sort_by_pincode.keys():
+
+		peopleDataSet= sort_by_pincode[pincode]
 
 		PARAMS= {'pincode': pincode, 'date': today_date}
 		URL= "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin"
 
 		print("Pincode "+str(pincode)+" API Call: ")
-		setuAPIReq(URL, PARAMS)
+
+		pdata45= [i['Email'] for i in ageset45 for j in peopleDataSet if i['Pincode']==j['Pincode']]
+		pdata18= [i['Email'] for i in ageset18 for j in peopleDataSet if i['Pincode']==j['Pincode']]
+		pdataall= [i['Email'] for i in agesetall for j in peopleDataSet if i['Pincode']==j['Pincode']]
+
+		if len(pdata45) > 0:
+			setuAPIReq(URL, PARAMS, pdata45, 45)
+		if len(pdata18) > 0:
+			setuAPIReq(URL, PARAMS, pdata18, 18)
+		if len(pdataall) > 0:
+			setuAPIReq(URL, PARAMS, pdataall, 0)
 		print()
 
-	for district_id in sort_by_district.keys():
+	for district_id in sort_by_district:
+
+		peopleDataSet= sort_by_district[district_id]
 
 		PARAMS= {'district_id': district_id, 'date': today_date}
 		URL= "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict"
 
 		print("District "+str(district_id)+" API Call: ")
-		setuAPIReq(URL, PARAMS)
+
+		pdata45= [i['Email'] for i in ageset45 for j in peopleDataSet if i['District']==j['District']]
+		pdata18= [i['Email'] for i in ageset18 for j in peopleDataSet if i['District']==j['District']]
+		pdataall= [i['Email'] for i in agesetall for j in peopleDataSet if i['District']==j['District']]
+
+		if len(pdata45) > 0:
+			setuAPIReq(URL, PARAMS, pdata45, 45)
+		if len(pdata18) > 0:
+			setuAPIReq(URL, PARAMS, pdata18, 18)
+		if len(pdataall) > 0:
+			setuAPIReq(URL, PARAMS, pdataall, 0)
 		print()
+
 
 if __name__ == '__main__':
 	GetDataFromSetuAPI()
