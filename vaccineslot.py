@@ -1,24 +1,38 @@
 # importing the required libraries
 import gspread
-import pandas as pd
 from oauth2client.service_account import ServiceAccountCredentials
 import requests
 from datetime import datetime
+import random
+
+
+def switchHeader():
+	headersList= [
+			'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15',
+			'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0',
+			'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36',
+			'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:77.0) Gecko/20100101 Firefox/77.0',
+			'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36',
+			]
+
+	return random.choice(headersList)
+
+def switchLanguage():
+	langList= ['en-US', 'hi-IN']
+	return random.choice(langList)
 
 def setuAPIReq(URL, PARAMS, HEADERS= {}):
 
-	session = requests.Session()
-	r = session.get(URL, headers= HEADERS, params= PARAMS, timeout=5)
-	print(r.status_code)
+	r = requests.get(URL, headers= HEADERS, params= PARAMS, timeout=5)
 	if r.status_code == 200:
-		return r.json()
+		print(r)
 	else:
 		HEADERS = {
-    	'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Mobile Safari/537.36',
-		'accept-Language': 'en-US',
+    	'User-Agent': switchHeader(),
+		'accept-Language': switchLanguage(),
 		'content': 'application/json'
 		}
-		setuAPIReq(URL, PARAMS, HEADERS)
+		ret= setuAPIReq(URL, PARAMS, HEADERS)
 
 def GetDataFromGoogleSheets():
 	# define the scope
@@ -75,7 +89,8 @@ def GetDataFromSetuAPI():
 		PARAMS= {'pincode': pincode, 'date': today_date}
 		URL= "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin"
 
-		print("Pincode ", setuAPIReq(URL, PARAMS))
+		print("Pincode "+str(pincode)+" API Call: ")
+		setuAPIReq(URL, PARAMS)
 		print()
 
 	for district_id in sort_by_district.keys():
@@ -83,7 +98,8 @@ def GetDataFromSetuAPI():
 		PARAMS= {'district_id': district_id, 'date': today_date}
 		URL= "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict"
 
-		print("District ", setuAPIReq(URL, PARAMS))
+		print("District "+str(district_id)+" API Call: ")
+		setuAPIReq(URL, PARAMS)
 		print()
 
 if __name__ == '__main__':
