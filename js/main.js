@@ -1,8 +1,13 @@
 $(function() {
 
 	'use strict';
+  
+  var date = document.getElementById("date");
+  date.value= new Date()
+    .toJSON()
+    .slice(0, 10);
 
-	// Form
+  // Form
   
 	var contactForm = function() {
 
