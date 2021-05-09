@@ -1,0 +1,13 @@
+Client:
+
+Remote connect to ec2
+chmod 400 Documents/VaccineSlotApp/vaccineslot.pem
+ssh -X -i Documents/VaccineSlotApp/vaccineslot.pem ubuntu@15.207.222.100
+
+Copy Files/Folders to ec2
+scp -i Documents/VaccineSlotApp/vaccineslot.pem -r Documents/VaccineSlotApp ubuntu@15.207.222.100:AppCode
+
+EC2:
+
+sudo chmod -R 777 AppCode/
+X11 forwarding: https://gist.github.com/jay-johnson/9184a4e9df277dd2d518eaa4343ece53

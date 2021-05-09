@@ -1,0 +1,46 @@
+{
+  "beneficiary_dtls": [
+    {
+      "bref_id": "67399372240910",
+      "name": "HEMAL RAJENDRA GOKHALE",
+      "vaccine": "",
+      "age": 24,
+      "status": "Not Vaccinated"
+    },
+    {
+      "bref_id": "53125036748170",
+      "name": "Chinmayee Rajendra Gokhale",
+      "vaccine": "",
+      "age": 19,
+      "status": "Not Vaccinated"
+    }
+  ],
+  "location_dtls": [
+    {
+      "district_id": 363,
+      "district_name": "Pune",
+      "alert_freq": 5720
+    }
+  ],
+  "search_option": 2,
+  "minimum_slots": 2,
+  "refresh_freq": 5,
+  "auto_book": "yes",
+  "start_date": 1,
+  "vaccine_type": null,
+  "fee_type": [
+    "Free",
+    "Paid"
+  ],
+  "preferred_centres": [
+    "YAMUNANAGAR HOSPITAL (18-44)",
+    "NEW AKURDI HOSPITAL (18-44YRS)",
+    "PREMLOK PARK DISP- 2(18-44)",
+    "MASULKAR EYE HOSPITAL(18-44)",
+    "COVAX ANNASAHEB MAGAR 18 TO 44",
+    "CHAKAN RH (18-45 YEARS AGE )",
+    "INGWALE SCHOOL P NILAKH(18-44)",
+  	"NEW JIJAMATA HOSPITAL-2(18-44)",
+    "NEW BHOSARI (18-44)"
+  ]
+}
