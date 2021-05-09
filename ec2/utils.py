@@ -47,7 +47,7 @@ def viable_options(resp, minimum_slots, min_age_booking, fee_type, preferred_cen
                 if (session['available_capacity'] >= minimum_slots) \
                         and (session['min_age_limit'] <= min_age_booking)\
                         and (center['fee_type'] in fee_type)\
-                        and (center['name'] in preferred_centres):
+                        and (preferred_centres is None or center['name'] in preferred_centres):
                     out = {
                         'name': center['name'],
                         'district': center['district_name'],
