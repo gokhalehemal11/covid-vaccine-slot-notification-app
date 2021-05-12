@@ -115,7 +115,7 @@ def check_calendar_by_district(request_header, vaccine_type, location_dtls, star
 
         options = []
         for location in location_dtls:
-            resp = requests.get(base_url.format(location['district_id'], start_date), headers=request_header)
+            resp = requests.get(base_url.format(location['district_id'], start_date), headers=request_header, timeout= 3)
 
             if resp.status_code == 401:
                 print('TOKEN INVALID')
@@ -159,7 +159,7 @@ def check_calendar_by_pincode(request_header, vaccine_type, location_dtls, start
 
         options = []
         for location in location_dtls:
-            resp = requests.get(base_url.format(location['pincode'], start_date), headers=request_header)
+            resp = requests.get(base_url.format(location['pincode'], start_date), headers=request_header, timeout= 3)
 
             if resp.status_code == 401:
                 print('TOKEN INVALID')
